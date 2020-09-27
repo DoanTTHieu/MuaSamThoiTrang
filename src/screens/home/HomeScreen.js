@@ -1,20 +1,56 @@
 import React from "react";
-import { StyleSheet } from "react-native";
+import { View, StyleSheet, Image } from "react-native";
 import { SafeAreaView } from "react-navigation";
-import { Text } from "react-native-elements";
+import { TouchableOpacity, ScrollView } from "react-native-gesture-handler";
 
-const HomeScreen = () => {
+import SearchBar from "../../components/InputFields/SearchBar";
+import { navigate } from "../../utils/NavigationRef";
+
+import MenuIcon from "../../../assets/icons/menu.png";
+
+const HomeScreen = ({ navigation }) => {
+  const didTapOptions = () => {
+    console.log("Show Options");
+  };
+
+  const goToSearchPage = () => {
+    navigate("Search", null);
+  };
+
   return (
-    <SafeAreaView>
-      <Text h2> HomeScreen</Text>
+    <SafeAreaView forceInset={{ top: "always" }}>
+      <View>
+        <View style={styles.searchOptions}>
+          <SearchBar didTouch={() => goToSearchPage()} isHome={true} />
+          <TouchableOpacity onPress={() => didTapOptions()}>
+            <Image style={styles.imgIcon} source={MenuIcon} />
+          </TouchableOpacity>
+        </View>
+        {/* scroll  */}
+      </View>
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  imgIcon: {
+    width: 50,
+    height: 30,
+  },
+  searchOptions: {
+    display: "flex",
+    height: 60,
+    justifyContent: "space-around",
+    flexDirection: "row",
+    alignItems: "center",
+    marginRight: 10,
   },
 });
+
+HomeScreen.navigationOptions = () => {
+  return {
+    header: null,
+  };
+};
 
 export default HomeScreen;
