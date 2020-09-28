@@ -1,6 +1,6 @@
-import { StatusBar } from 'expo-status-bar';
+//import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Image} from 'react-native';
 import { createAppContainer, createSwitchNavigator } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 import { createBottomTabNavigator } from "react-navigation-tabs";
@@ -23,25 +23,81 @@ import { setNavigator } from "./src/utils/NavigationRef";
 
 const switchNavigator = createSwitchNavigator({
   homeStack: createBottomTabNavigator({
-    Home: createStackNavigator({
-      TopProducts: HomeScreen,
-      Search: SearchScreen,
-      ProductDetail: ProductDetailsScreen,
-    }),
-    Offer: OffersScreen,
-    Cart: createStackNavigator({
-      Shoping: CartScreen,
-      Order: OrderScreen,
-      Payment: PaymentScreen,
-    }),
-    Account: AccountScreen,
+    Home: {
+      screen: createStackNavigator({
+        TopProducts: HomeScreen,
+        Search: SearchScreen,
+        ProductDetail: ProductDetailsScreen,
+      }),
+      navigationOptions: {
+        tabBarOptions: {
+          activeTintColor: '#0099FF',
+        },
+        tabBarIcon: ({ focused, tintColor }) => {
+          let icon =
+            focused == true
+              ? require('./assets/icons/blue_home.png')
+              : require('./assets/icons/home.png');
+          return <Image source={icon} style={styles.tabIcon} />;
+        },
+      },
+    },
+    Offer: {
+      screen: OffersScreen,
+      navigationOptions: {
+        tabBarOptions: {
+          activeTintColor: '#0099FF',
+        },
+        tabBarIcon: ({ focused, tintColor }) => {
+          let icon =
+            focused == true
+              ? require('./assets/icons/blue_offer.png')
+              : require('./assets/icons/offer.png');
+          return <Image source={icon} style={styles.tabIcon} />;
+        },
+      },
+    },
+    Cart: {
+      screen: createStackNavigator({
+        Shoping: CartScreen,
+        Order: OrderScreen,
+        Payment: PaymentScreen,
+      }),
+      navigationOptions: {
+        tabBarOptions: {
+          activeTintColor: '#0099FF',
+        },
+        tabBarIcon: ({ focused, tintColor }) => {
+          let icon =
+            focused == true
+              ? require('./assets/icons/blue_cart.png')
+              : require('./assets/icons/cart.png');
+          return <Image source={icon} style={styles.tabIcon} />;
+        },
+      },
+    },
+    Account: {
+      screen: AccountScreen,
+      navigationOptions: {
+        tabBarOptions: {
+          activeTintColor: '#0099FF',
+        },
+        tabBarIcon: ({ focused, tintColor }) => {
+          let img =
+            focused == true
+              ? require('./assets/icons/blue_account.png')
+              : require('./assets/icons/account.png');
+          return <Image source={img} style={styles.tabIcon} />;
+        },
+      },
+    },
   }),
-  loginStack: createStackNavigator({
-    //Signup: SignupScreen,
-    Signin: SigninScreen,
-    Signup: SignupScreen,
-    
-  }),
+  loginStack: {
+    screen: createStackNavigator({
+      Signin: SigninScreen,
+      Signup: SignupScreen,
+    }),
+  },
 });
 
 const App = createAppContainer(switchNavigator);
@@ -56,3 +112,9 @@ export default () => {
   );
 }
 
+const styles = StyleSheet.create({
+  tabIcon: {
+    width: 30,
+    height: 30,
+  },
+});
