@@ -11,9 +11,10 @@ const SuccessfulValidationScreen = (props) => {
       </View>
       <Animatable.View style={styles.footer} animation="fadeInUpBig">
         <FontAwesome name="check-circle" color="#0099FF" size={150} />
-        <Text style={styles.text_footer}>Validate successfully</Text>
+        <Text style={styles.text_footer}>VALIDATE SUCCESSFULLY</Text>
         <Text style={[styles.text_footer, { marginTop: 10 }]}>
-          CLICK TO CONTINUE
+          {/* CLICK TO CONTINUE Validate successfully */}
+          Click to continue
         </Text>
         <TouchableOpacity
           style={styles.button}

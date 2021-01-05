@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback} from "react";
 import { useDispatch } from "react-redux";
 import {
   Dimensions,
@@ -56,19 +56,14 @@ const CartDetail = (props) => {
   });
 
   const updateQuantityHandler = (choice) => {
+    updateQuantity(choice);
     const url = `http://${hostname}/cart/${currentUser.cart.id}/updateQuantity/?productId=${props.item.id}&choice=${choice}`;
     fetch(url)
-      .then(() => {
-        updateQuantity(choice);
-      })
-      .then((detail) => {
-        setTrigger(!trigger);
-      })
       .catch((err) => console.log(err));
   };
 
   return (
-    <View style={product} key={Math.random()}>
+    <View style={product}>
       <Image source={{ uri: props.item.imageUrl }} style={productImage} />
       <View style={mainRight}>
         <View

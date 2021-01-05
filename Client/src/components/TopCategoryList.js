@@ -26,7 +26,7 @@ const categories = [
   { id: 2, name: "jewelry", image: jewelry },
   { id: 3, name: "shoe", image: shoe },
   { id: 4, name: "wedding_dress", image: wedding_dress },
-  { id: 5, name: "watches", image: watches },
+  { id: 5, name: "watch", image: watches },
   { id: 6, name: "trainers", image: trainers },
   { id: 7, name: "purse", image: purse },
   { id: 8, name: "skirt", image: skirt },
@@ -34,9 +34,9 @@ const categories = [
   { id: 10, name: "flip flops", image: flip_flops },
   { id: 11, name: "bra", image: bra },
   { id: 12, name: "hat", image: hat },
-  { id: 13, name: "t-shirt", image: t_shirt },
+  { id: 13, name: "T-shirt", image: t_shirt },
   { id: 14, name: "pajama", image: pajama },
-  { id: 15, name: "slippers", image: slippers },
+  { id: 15, name: "slipper", image: slippers },
 ];
 
 const TopCategory = () => {

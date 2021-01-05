@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Dimensions } from "react-native";
+import { View, StyleSheet, Dimensions, ScrollView } from "react-native";
 
 import SpecialProducts from "./SpecialProducts";
 import Items from "./Items";
@@ -18,9 +18,9 @@ export default class ProductsView extends React.Component {
         {/* <View style={styles.specialProducts}>
           <SpecialProducts navigation={this.props.navigation} />
         </View> */}
-        <View style={{ flex: 1, marginTop: 10 }}>
-        <ScrollView showsVerticalScrollIndicator={false} style={{flex: 1}} >
-        <TopCategory style={styles.topCategory} />
+        <View style={{ flex: 1 }}>
+        <ScrollView  >
+          <TopCategory showsVerticalScrollIndicator={false} style={styles.topCategory} />
           <Items
             navigation={this.props.navigation}
             onSelect={() => {
@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 0,
     //alignItems: "center",
+    //backgroundColor: "#fff",
     backgroundColor: "#DFDFDF",
   },
   header: {
@@ -54,4 +55,8 @@ const styles = StyleSheet.create({
     //width: width * 0.85 + imageBorder * 2,
     height: height * 0.3 + imageBorder * 2,
   },
+  topCategory:{
+    // backgroundColor: 'black'
+    height: 20
+  }
 });

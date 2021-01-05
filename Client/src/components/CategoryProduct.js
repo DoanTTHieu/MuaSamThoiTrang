@@ -17,7 +17,7 @@ const CategoryItem = ({ data }) => {
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    height: "100%",
+    height: 70,
     display: "flex",
     flexDirection: "column",
     justifyContent: "flex-start",

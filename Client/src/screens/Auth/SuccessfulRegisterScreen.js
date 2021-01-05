@@ -11,9 +11,10 @@ const SuccessfulRegisterScreen = (props) => {
       </View>
       <Animatable.View style={styles.footer} animation="fadeInUpBig">
         <FontAwesome name="check-circle" color="#0099FF" size={150} />
-        <Text style={styles.text_footer}>Register successfully</Text>
+        <Text style={styles.text_footer}>REGISTER SUCCESSFULLY</Text>
         <Text style={[styles.text_footer, { marginTop: 10 }]}>
-          GO BACK TO SIGN IN
+          {/* GO BACK TO SIGN IN Register successfully*/}
+          Go back to sign in
         </Text>
         <TouchableOpacity
           style={styles.button}

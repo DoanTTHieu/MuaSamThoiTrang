@@ -1,6 +1,6 @@
 import { CHANGE_USER } from "../actions/users";
 
-const initialState = { username: "", cart: {} };
+const initialState = { username: "hieu", cart: {id:1, detail:[]} };
 
 const usersReducer = (state = initialState, action) => {
   switch (action.type) {

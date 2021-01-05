@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     //shadowColor: "#2E272B",
    // shadowOffset: { width: 0, height: 3 },
     //shadowOpacity: 0.2,
-    //borderRadius: 5,
+    borderRadius: 5,
   },
   name: {
     fontSize: 20,
@@ -72,8 +72,9 @@ const styles = StyleSheet.create({
   },
   imageStyle: {
     width: width / 2 - 10,
-    height: width / 2 - 20,
-    //borderRadius: 5,
+    // height: width / 2 - 20,
+    height: width / 2,
+    borderRadius: 5,
     //resizeMode: "stretch"
   },
   price: {

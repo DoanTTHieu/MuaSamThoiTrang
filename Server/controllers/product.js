@@ -186,6 +186,28 @@ module.exports.searchProducts = function (req, res, next) {
     });
 };
 
+module.exports.filterProductsByType = function (req, res, next) {
+  const productInfo = req.query.v; // {p: 'The'}
+  Product.findAll({
+    where: {
+      [Op.or]: [
+        {
+          type: {
+            [Op.substring]: productInfo,
+          },
+        },
+      ],
+    },
+  })
+    .then((product) => {
+      res.status(200).json(product);
+    })
+    .catch((err) => {
+      if (!err.status) err.statusCode = 500;
+      next(err);
+    });
+};
+
 module.exports.getProductCount = function (req, res, next) {
   // count => trả về number => k cho phép trả về nên bad request nên phải chuyển từ number sang string
   Product.count()

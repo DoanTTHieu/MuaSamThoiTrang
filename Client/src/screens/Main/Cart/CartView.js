@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback, useEffect , useLayoutEffect} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   Dimensions,
@@ -6,10 +6,11 @@ import {
   StyleSheet,
   TouchableOpacity,
   View,
+  Button,
   Text,
 } from "react-native";
 
-import CartDetail from "../../../components/CarDetail";
+import CartDetail from "../../../components/CartDetail";
 import { hostname } from "../../../constant/constant";
 import { changeUser } from "../../../store/actions/users";
 
@@ -48,10 +49,16 @@ const CartView = (props) => {
     }
   };
 
+  useLayoutEffect(()=>{
+    fetch(`http://${hostname}/cart/${cartId}/detail`).then((res)=>res.json()).then(data=>{
+      dispatch(changeUser(currentUser, data));
+
+    })
+  })
+  
   useEffect(() => {
     if (pay) return;
     const url = `http://${hostname}/cart/${cartId}/pay`;
-
     fetch(url, {
       method: "POST",
       headers: {
@@ -83,21 +90,24 @@ const CartView = (props) => {
         </View>
       </View>
       <ScrollView style={main}>
-        {productsInCart.map((item) => (
-          <CartDetail
-            item={item}
-            onSelect={() => {
-              props.navigation.navigate("ProductDetail");
-            }}
-            key={Math.random()}
-          />
-        ))}
+        {
+          productsInCart? productsInCart.map((item, index) => (
+            <CartDetail
+              item={item}
+              onSelect={() => {
+                props.navigation.navigate("ProductDetail");
+              }}
+              key={index}
+            />
+          )
+          ) : null
+        }
       </ScrollView>
       <TouchableOpacity style={checkoutButton} onPress={payHandler}>
-        <Text style={checkoutTitle}>
+         <Text style={checkoutTitle}>
           TOTAL {productsInCart.reduce((a, b) => a + b.price * b.quantity, 0)}đ
           CHECKOUT NOW
-        </Text>
+        </Text> 
       </TouchableOpacity>
     </View>
   );
@@ -124,14 +134,14 @@ const styles = StyleSheet.create({
     height: 50,
     margin: 10,
     marginTop: 0,
-    backgroundColor: "#f7c744",
+    backgroundColor: "#0099FF",
     borderRadius: 2,
     alignItems: "center",
     justifyContent: "center",
   },
   title: {
     height: 40,
-    backgroundColor: "#f7c744",
+    backgroundColor: "#0099FF",
   },
   headerTitle: { color: "#203546", fontSize: 20 },
 });

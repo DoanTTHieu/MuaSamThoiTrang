@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet, Image, Dimensions } from "react-native";
-import map from "../../../../assets/items/capuchino.jpg";
+import map from "../../../../assets/items/women.jpg";
 
 import phoneIcon from "../../../../assets/icons/phone.png";
 import mailIcon from "../../../../assets/icons/mail.png";
@@ -45,11 +45,11 @@ class Contact extends Component {
           </View>
           <View style={rowInfoContainer}>
             <Image source={mailIcon} style={imageStyle} />
-            <Text style={infoText}>CoffeeShop@gmail.com</Text>
+            <Text style={infoText}>MuaSamThoiTrang@gmail.com</Text>
           </View>
           <View style={[rowInfoContainer, { borderBottomWidth: 0 }]}>
             <Image source={messageIcon} style={imageStyle} />
-            <Text style={infoText}>(+84) 0700008909</Text>
+            <Text style={infoText}>(+84) 709999999</Text>
           </View>
         </View>
       </View>

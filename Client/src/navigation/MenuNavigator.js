@@ -9,7 +9,7 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import * as Animatable from "react-native-animatable";
 import { useSelector } from "react-redux";
 
-import account from "../../assets/icons/account.png";
+import account from "../../assets/icons/black_account.png";
 import OrdersHistory from "../screens/Menu/OrdersHistory";
 import TabNavigator from "./TabNavigator";
 

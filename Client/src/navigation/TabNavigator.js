@@ -20,43 +20,33 @@ export default class TabNavigator extends Component {
       <View style={{ flex: 1 }}>
         <Tab.Navigator
           screenOptions={({ route }) => ({
-            tabBarIcon: ({ focused, color, size }) => {
-              let iconName;
+            tabBarIcon: ({ focused, tintColor }) => {
+              let icon;
               if (route.name === "Contact") {
-                iconName = "md-person"; //focused ? "md-person" : "md-person";
-              } else if (route.name === "Products") {
-                iconName = "ios-cafe"; //focused ? "ios-cafe" : "ios-cafe";
+                icon =
+                focused == true
+                  ? require('../../assets/icons/blue_account.png')
+                  : require('../../assets/icons/account.png');
+              } else if (route.name === "Home") {
+                icon =  
+                focused == true
+                    ? require('../../assets/icons/blue_home.png')
+                    : require('../../assets/icons/home.png');
               } else if (route.name === "Cart") {
-                iconName = "md-cart"; //focused ? "md-cart" : "md-cart";
+                icon =
+                focused == true
+                  ? require('../../assets/icons/blue_cart.png')
+                  : require('../../assets/icons/cart.png');
               }
-
-              return <Ionicons name={iconName} size={size} color={color} />;
+              return <Image source={icon} style={styles.tabIcon} />;
             },
-            // tabBarIcon: ({ focused, tintColor }) => {
-            //   let icon;
-            //   if (route.name === "Contact") {
-            //     focused == true
-            //       ? require('../../assets/icons/blue_account.png')
-            //       : require('../../assets/icons/account.png');
-            //   } else if (route.name === "Products") {
-            //     let icon =
-            //       focused == true
-            //         ? require('../../assets/icons/blue_home.png')
-            //         : require('../../assets/icons/home.png');
-            //   } else if (route.name === "Cart") {
-            //     focused == true
-            //       ? require('../../assets/icons/blue_cart.png')
-            //       : require('../../assets/icons/cart.png');
-            //   }
-            //   return <Image source={icon} style={styles.tabIcon} />;
-            // },
           })}
           tabBarOptions={{
-            activeTintColor: "#f7c744",
-            inactiveTintColor: "#203546",
+            activeTintColor: "#0099FF",
+            // inactiveTintColor: "#8E8E93",
           }}
         >
-          <Tab.Screen name="Products" component={ProductsScreen} />
+          <Tab.Screen name="Home" component={ProductsScreen} />
           <Tab.Screen name="Cart" component={CartScreen} />
           <Tab.Screen name="Contact" component={ContactScreen} />
         </Tab.Navigator>
@@ -67,7 +57,7 @@ export default class TabNavigator extends Component {
 
 const styles = StyleSheet.create({
   tabIcon: {
-    width: 20,
-    height: 20,
+    width: 30,
+    height: 30,
   },
 });
