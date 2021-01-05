@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import { View, StyleSheet, Dimensions, ScrollView } from "react-native";
 
 import SpecialProducts from "./SpecialProducts";
@@ -8,7 +8,18 @@ import TopCategory from "../../../components/TopCategoryList";
 
 const { width, height } = Dimensions.get("window");
 const imageBorder = 5;
+
 export default class ProductsView extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {productType: ""};
+  }
+  // state = 
+  // const [productType, setProductType]=useState("all");
+ onTypeClicked(params) {
+    console.log(params);  
+ }
+
   render() {
     return (
       <View style={styles.container}>
@@ -20,7 +31,10 @@ export default class ProductsView extends React.Component {
         </View> */}
         <View style={{ flex: 1 }}>
         <ScrollView  >
-          <TopCategory showsVerticalScrollIndicator={false} style={styles.topCategory} />
+          <TopCategory showsVerticalScrollIndicator={false} 
+            style={styles.topCategory} 
+            {...this.state}
+          />
           <Items
             navigation={this.props.navigation}
             onSelect={() => {

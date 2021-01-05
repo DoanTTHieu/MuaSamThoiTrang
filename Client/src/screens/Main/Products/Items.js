@@ -7,7 +7,6 @@ import * as Animatable from "react-native-animatable";
 
 const Items = (props) => {
   const [dataSource, setDataSource] = useState([]);
-
   const searchedKeys = useSelector((state) => state.keys.keys);
 
   useEffect(() => {
@@ -23,6 +22,7 @@ const Items = (props) => {
     fetch(url)
       .then((res) => res.json())
       .then((resData) => {
+        console.log(resData);
         setDataSource(resData);
       })
       .catch((err) => console.log(err));

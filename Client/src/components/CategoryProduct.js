@@ -1,13 +1,15 @@
 import React from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 
-const CategoryItem = ({ data }) => {
+const CategoryItem = ({ data, props,onSelected }) => {
   const { name, image } = data.item;
 
   return (
     <View style={styles.root}>
-      <TouchableOpacity>
-        <Image style={styles.foodImage} source={image} />
+      <TouchableOpacity
+        onPress={onSelected}
+      > 
+        <Image style={styles.productImage} source={image} />
       </TouchableOpacity>
       <Text style={styles.title}>{name}</Text>
     </View>
@@ -24,7 +26,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     margin: 10,
   },
-  foodImage: {
+  productImage: {
     borderRadius: 10,
     height: 50,
     width: 50,

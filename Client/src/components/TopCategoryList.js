@@ -39,20 +39,18 @@ const categories = [
   { id: 15, name: "slipper", image: slippers },
 ];
 
-const TopCategory = () => {
-//   onSelect = (item) => {
-//     console.log("Selected Item is", item);
-//   };
-
+const TopCategory = (props) => {
+  
   return (
     <FlatList
       horizontal
       showsHorizontalScrollIndicator={false}
       data={categories}
-      renderItem={(item) => <CategoryProduct data={item} />}
+      renderItem={(item) => <CategoryProduct data={item}  onSelected={()=>{console.log(item.item.name);}}/>}
       keyExtractor={(item) => item.id}
       style = {{backgroundColor: '#fff'}}
     />
+
   );
 };
 

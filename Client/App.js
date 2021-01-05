@@ -4,8 +4,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStore, combineReducers } from "redux";
 import { Provider } from "react-redux";
 
-//import LoginNavigator from "./src/navigation/MainNavigator";
-import LoginNavigator from "./src/navigation/LoginHomeNavigator";
+import LoginNavigator from "./src/navigation/MainNavigator";
+//import LoginNavigator from "./src/navigation/LoginHomeNavigator";
 import usersReducer from "./src/store/reducers/users";
 import itemsReducer from "./src/store/reducers/items";
 import keysReducer from "./src/store/reducers/keys";
