@@ -13,14 +13,16 @@ export default class ProductsView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {productType: ""};
+    this.onTypeClicked = this.onTypeClicked.bind(this)
   }
   // state = 
   // const [productType, setProductType]=useState("all");
- onTypeClicked(params) {
-    console.log(params);  
- }
+  onTypeClicked(params) {
+      this.setState({productType: params});
+  }
 
   render() {
+    console.log(this.state.productType);
     return (
       <View style={styles.container}>
         <View style={styles.header}>
@@ -34,6 +36,7 @@ export default class ProductsView extends React.Component {
           <TopCategory showsVerticalScrollIndicator={false} 
             style={styles.topCategory} 
             {...this.state}
+            onTypeClicked = {this.onTypeClicked}
           />
           <Items
             navigation={this.props.navigation}
@@ -41,6 +44,7 @@ export default class ProductsView extends React.Component {
               this.props.navigation.navigate("ProductDetail");
             }}
             filter={false}
+            type={this.state.productType}
           />
           </ScrollView>
         

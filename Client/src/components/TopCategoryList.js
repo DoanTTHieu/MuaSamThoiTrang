@@ -40,13 +40,20 @@ const categories = [
 ];
 
 const TopCategory = (props) => {
-  
+
   return (
     <FlatList
       horizontal
       showsHorizontalScrollIndicator={false}
       data={categories}
-      renderItem={(item) => <CategoryProduct data={item}  onSelected={()=>{console.log(item.item.name);}}/>}
+      renderItem={(item) => 
+        <CategoryProduct 
+          data={item}  
+          onSelected={()=>{
+            //console.log(item.item.name);
+            props.onTypeClicked(item.item.name);
+          }}
+        />}
       keyExtractor={(item) => item.id}
       style = {{backgroundColor: '#fff'}}
     />
